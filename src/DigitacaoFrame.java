@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 public class DigitacaoFrame extends JFrame {
 
 	private JLabel labelInstrucaoDigitacao;
+	private JLabel labelFrase;
 	private JLabel labelNotaInstrucao;
 	private JTextArea campoDigitacao;
 	
@@ -38,20 +39,20 @@ public class DigitacaoFrame extends JFrame {
 	private JPanel panelLinhaTresTeclado;
 	private JPanel panelLinhaQuatroTeclado;
 	private JPanel panelLinhaCincoTeclado;
+	private JPanel panelFrase;
 	private Digitacao dig;
 	
-	private Container container;
+	
 	
 	public DigitacaoFrame() {
 		
 		super("Digitação");
 		setLayout(new FlowLayout());
-		container = getContentPane();
 		
 		dig = new Digitacao();
 		
 		
-		panelTeclado = new JPanel(new GridLayout(5, 1));
+		panelTeclado = new JPanel(new GridLayout(6, 1));
 		panelTituloCampoDigitacao = new JPanel(new GridLayout(2, 1));
 		panelCampoDigitacao = new JPanel(new BorderLayout());
 		
@@ -65,6 +66,11 @@ public class DigitacaoFrame extends JFrame {
 		
 		campoDigitacao = new JTextArea();
 		panelCampoDigitacao.add(campoDigitacao, BorderLayout.CENTER);
+		
+		panelFrase = new JPanel(new FlowLayout());
+		
+		labelFrase = new JLabel(String.format("Digite corretamente a seguinte frase: %s", Digitacao.getPangramas()[0]));
+		panelFrase.add(labelFrase);
 		
 		panelLinhaUmTeclado = new JPanel(new FlowLayout());
 		panelLinhaDoisTeclado = new JPanel(new FlowLayout());
@@ -225,7 +231,9 @@ public class DigitacaoFrame extends JFrame {
 		
 		
 		add(panelCampoDigitacao);
+		add(panelFrase);
 		add(panelTeclado);
+		
 	}
 	
 }

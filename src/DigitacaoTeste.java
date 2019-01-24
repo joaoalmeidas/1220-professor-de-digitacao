@@ -6,7 +6,7 @@ public class DigitacaoTeste {
 		
 		DigitacaoFrame dig = new DigitacaoFrame();
 		dig.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		dig.setSize(1500, 700);
+		dig.setSize(1350, 700);
 		dig.setVisible(true);
 		
 	}
