@@ -38,6 +38,7 @@ public class DigitacaoFrame extends JFrame {
 	private JPanel panelLinhaTresTeclado;
 	private JPanel panelLinhaQuatroTeclado;
 	private JPanel panelLinhaCincoTeclado;
+	private Digitacao dig;
 	
 	private Container container;
 	
@@ -46,6 +47,8 @@ public class DigitacaoFrame extends JFrame {
 		super("Digitação");
 		setLayout(new FlowLayout());
 		container = getContentPane();
+		
+		dig = new Digitacao();
 		
 		
 		panelTeclado = new JPanel(new GridLayout(5, 1));
@@ -150,11 +153,11 @@ public class DigitacaoFrame extends JFrame {
 			
 
 		}
-		
-		System.out.println(nomeTeclas.length);
-		System.out.println(codigoTeclas.length);
+
 		
 		final Color corOriginal = teclas[0].getBackground();
+		
+		
 		
 		campoDigitacao.addKeyListener(
 		
@@ -165,12 +168,17 @@ public class DigitacaoFrame extends JFrame {
 						@Override
 						public void keyPressed(KeyEvent arg0) {
 							
-							
 							for(int i = 0; i < teclas.length; i++) {
 								
 								if(arg0.getKeyCode() == codigoTeclas[i]) {
 									
+										
 									teclas[i].setBackground(Color.cyan);
+									
+									System.out.println(arg0.getKeyChar());
+									System.out.println(arg0.getKeyCode());
+									
+									
 									
 								}
 								
