@@ -1,8 +1,11 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +26,10 @@ public class DigitacaoFrame extends JFrame {
 												"Shift", "\\", "Z", "X", "C", "V", "B", "N", "M", ",", ".", ":", "/", "ShiftDir",
 												"Ctrl", "cmd", "Alt", "Espaço", "Alt", "cmd", "MsD", "Ctrl"};
 	
+	private final static int[] codigoTeclas = {222, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, 8, 9, 81, 
+			87, 69, 82, 84, 89, 85, 73, 79, 80, 129, 91, 10, 20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 0, 131, 
+			93, 10, 16, 92, 90, 88, 67, 86, 66, 78, 77, 44, 46, 59, 0, 16, 17, 524, 18, 32, 17, 524, 525, 17};
+	
 	private JPanel panelTeclado;
 	private JPanel panelTituloCampoDigitacao;
 	private JPanel panelCampoDigitacao;
@@ -39,6 +46,7 @@ public class DigitacaoFrame extends JFrame {
 		super("Digitação");
 		setLayout(new FlowLayout());
 		container = getContentPane();
+		
 		
 		panelTeclado = new JPanel(new GridLayout(5, 1));
 		panelTituloCampoDigitacao = new JPanel(new GridLayout(2, 1));
@@ -116,10 +124,6 @@ public class DigitacaoFrame extends JFrame {
 				
 			
 			
-			
-			
-			
-			
 			if(i >= 0 && i <= 13) {
 				
 				panelLinhaUmTeclado.add(teclas[i]);
@@ -147,6 +151,61 @@ public class DigitacaoFrame extends JFrame {
 
 		}
 		
+		System.out.println(nomeTeclas.length);
+		System.out.println(codigoTeclas.length);
+		
+		final Color corOriginal = teclas[0].getBackground();
+		
+		campoDigitacao.addKeyListener(
+		
+					new KeyListener() {
+						
+						
+
+						@Override
+						public void keyPressed(KeyEvent arg0) {
+							
+							
+							for(int i = 0; i < teclas.length; i++) {
+								
+								if(arg0.getKeyCode() == codigoTeclas[i]) {
+									
+									teclas[i].setBackground(Color.cyan);
+									
+								}
+								
+							}
+							
+						}
+
+						@Override
+						public void keyReleased(KeyEvent arg0) {
+							
+							for(int i = 0; i < teclas.length; i++) {
+								
+								if(arg0.getKeyCode() == codigoTeclas[i]) {
+									
+									teclas[i].setBackground(corOriginal);
+									
+								}
+								
+							}
+							
+						}
+
+						@Override
+						public void keyTyped(KeyEvent arg0) {
+							// TODO Auto-generated method stub
+							
+						}
+						
+						
+						
+					}
+					
+				
+		);
+		
 		
 		
 		panelTeclado.add(panelLinhaUmTeclado);
@@ -154,7 +213,7 @@ public class DigitacaoFrame extends JFrame {
 		panelTeclado.add(panelLinhaTresTeclado);
 		panelTeclado.add(panelLinhaQuatroTeclado);
 		panelTeclado.add(panelLinhaCincoTeclado);
-		
+
 		
 		
 		add(panelCampoDigitacao);
