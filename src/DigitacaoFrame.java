@@ -17,7 +17,7 @@ public class DigitacaoFrame extends JFrame {
 
 	private JLabel labelInstrucaoDigitacao;
 	private JLabel labelNotaInstrucao;
-	private JTextArea campoDigitacao;
+	private JTextField campoDigitacao;
 	
 	private JTextField textFrase;
 	
@@ -44,6 +44,7 @@ public class DigitacaoFrame extends JFrame {
 	
 	private Digitacao dig;
 	private int fraseAtual = 0;
+	private int letraAtual = 0;
 	
 	public DigitacaoFrame() {
 		
@@ -67,7 +68,7 @@ public class DigitacaoFrame extends JFrame {
 		panelCampoDigitacao.setPreferredSize(new Dimension(1300, 300));
 		
 		
-		campoDigitacao = new JTextArea(String.format("%n"));
+		campoDigitacao = new JTextField();
 		panelCampoDigitacao.add(campoDigitacao, BorderLayout.CENTER);
 		
 		textFrase = new JTextField(String.format(Digitacao.getPangramas()[fraseAtual]));
@@ -166,7 +167,7 @@ public class DigitacaoFrame extends JFrame {
 		
 		final Color corOriginal = teclas[0].getBackground();
 		
-		
+
 		
 		campoDigitacao.addKeyListener(
 		
@@ -184,25 +185,32 @@ public class DigitacaoFrame extends JFrame {
 										
 									teclas[i].setBackground(Color.cyan);
 									
+									
 									if(arg0.getKeyCode() == 10 && fraseAtual < 10) {
 										
 										fraseAtual++;
 										textFrase.setText(Digitacao.getPangramas()[fraseAtual]);
 										campoDigitacao.setText(null);
+										letraAtual = 0;
 										
 									}else if(arg0.getKeyCode() == 10 && fraseAtual == 10) {
 										
 										campoDigitacao.setText(null);
 										campoDigitacao.setEditable(false);
-										textFrase.setText("INformaçções sobre o digitador.");
+										textFrase.setText("Informaçções sobre o digitador.");
+										
 									}
 									
-									System.out.println(arg0.getKeyChar());
-									System.out.println(arg0.getKeyCode());
-									
+									if(arg0.getKeyCode() == 8) {
+										
+										letraAtual--;
+										
+									}
 									
 									
 								}
+								
+								
 								
 							}
 							
@@ -219,16 +227,34 @@ public class DigitacaoFrame extends JFrame {
 									
 								}
 								
+								
+								
 							}
+							
+							if(campoDigitacao.getText().charAt(letraAtual) == textFrase.getText().charAt(letraAtual)) {
+								
+								letraAtual++;
+								
+							}else {
+								
+								campoDigitacao.setText(campoDigitacao.getText().substring(0, letraAtual));
+								
+							}
+							
+							
+							
+							
 							
 						}
 
 						@Override
 						public void keyTyped(KeyEvent arg0) {
-							// TODO Auto-generated method stub
+							
+							
+							
+							
 							
 						}
-						
 						
 						
 					}
