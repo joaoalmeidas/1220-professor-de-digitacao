@@ -19,7 +19,7 @@ public class DigitacaoFrame extends JFrame {
 	private JLabel labelNotaInstrucao;
 	private JTextField campoDigitacao;
 	
-	private JTextField textFrase;
+	private JTextArea textFrase;
 	
 	private JButton[] teclas;
 	private final static String[] nomeTeclas = {"'", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "+", "Backspace",
@@ -71,8 +71,10 @@ public class DigitacaoFrame extends JFrame {
 		campoDigitacao = new JTextField();
 		panelCampoDigitacao.add(campoDigitacao, BorderLayout.CENTER);
 		
-		textFrase = new JTextField(String.format(Digitacao.getPangramas()[fraseAtual]));
+		textFrase = new JTextArea(String.format(Digitacao.getPangramas()[fraseAtual]));
 		textFrase.setEditable(false);
+		textFrase.setEnabled(false);
+		textFrase.setDisabledTextColor(Color.BLACK);
 		textFrase.setPreferredSize(new Dimension(1300, 200));
 		panelFrase.add(textFrase);
 		
