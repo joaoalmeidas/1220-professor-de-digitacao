@@ -186,21 +186,6 @@ public class DigitacaoFrame extends JFrame {
 									teclas[i].setBackground(Color.cyan);
 									
 									
-									if(arg0.getKeyCode() == 10 && fraseAtual < 10) {
-										
-										fraseAtual++;
-										textFrase.setText(Digitacao.getPangramas()[fraseAtual]);
-										campoDigitacao.setText(null);
-										letraAtual = 0;
-										
-									}else if(arg0.getKeyCode() == 10 && fraseAtual == 10) {
-										
-										campoDigitacao.setText(null);
-										campoDigitacao.setEditable(false);
-										textFrase.setText("Informaçções sobre o digitador.");
-										
-									}
-									
 									if(arg0.getKeyCode() == 8) {
 										
 										letraAtual--;
@@ -234,13 +219,36 @@ public class DigitacaoFrame extends JFrame {
 							if(campoDigitacao.getText().charAt(letraAtual) == textFrase.getText().charAt(letraAtual)) {
 								
 								letraAtual++;
-								
+								dig.setAcertos(dig.getAcertos() + 1);
 								
 							}else {
 								
 								campoDigitacao.setText(campoDigitacao.getText().substring(0, letraAtual));
 								
 							}
+							
+							System.out.println(textFrase.getText());
+							System.out.println(campoDigitacao.getText());
+							
+							if(textFrase.getText().equals(campoDigitacao.getText())) {
+								
+								if(fraseAtual < 10) {
+									
+									fraseAtual++;
+									textFrase.setText(Digitacao.getPangramas()[fraseAtual]);
+									campoDigitacao.setText(null);
+									letraAtual = 0;
+									
+								}else {
+									
+									campoDigitacao.setText(null);
+									campoDigitacao.setEditable(false);
+									textFrase.setText(dig.toString());
+									
+								}
+								
+							}
+							
 							
 							
 							
