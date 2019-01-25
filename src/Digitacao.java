@@ -12,6 +12,12 @@ public class Digitacao {
 											   "The quick brown fox jumps over the lazy dog",
 											   "Sphinx of black quartz, judge my vow"};
 	
+	private final static String[] nomeTeclas = {"'", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "+", "Backspace",
+			"Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "´", "[", "Enter",
+			"Caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ç", "~", "]", "Enter2",
+			"Shift", "\\", "Z", "X", "C", "V", "B", "N", "M", ",", ".", ":", "/", "ShiftDir",
+			"Ctrl", "cmd", "Alt", "Espaço", "Alt", "cmd", "MsD", "Ctrl"};
+	
 	private int acertos;
 	private int[] errosPorTecla = new int[64];
 	
@@ -39,9 +45,9 @@ public class Digitacao {
 		
 		for(int i = 0; i < errosPorTecla.length; i++) {
 			
-			if(errosPorTecla[i] == 0) {
+			if(errosPorTecla[i] != 0) {
 				
-				erros += "0";
+				erros += String.format("%d - %s%n", errosPorTecla[i], nomeTeclas[i]);
 				
 			}
 			
