@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -12,13 +11,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class DigitacaoFrame extends JFrame {
 
 	private JLabel labelInstrucaoDigitacao;
-	private JLabel labelFrase;
 	private JLabel labelNotaInstrucao;
 	private JTextArea campoDigitacao;
+	
+	private JTextField textFrase;
 	
 	private JButton[] teclas;
 	private final static String[] nomeTeclas = {"'", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "+", "Backspace",
@@ -40,9 +41,8 @@ public class DigitacaoFrame extends JFrame {
 	private JPanel panelLinhaQuatroTeclado;
 	private JPanel panelLinhaCincoTeclado;
 	private JPanel panelFrase;
+	
 	private Digitacao dig;
-	
-	
 	
 	public DigitacaoFrame() {
 		
@@ -69,8 +69,10 @@ public class DigitacaoFrame extends JFrame {
 		
 		panelFrase = new JPanel(new FlowLayout());
 		
-		labelFrase = new JLabel(String.format("Digite corretamente a seguinte frase: %s", Digitacao.getPangramas()[0]));
-		panelFrase.add(labelFrase);
+		textFrase = new JTextField(String.format(Digitacao.getPangramas()[0]));
+		textFrase.setEditable(false);
+		textFrase.setPreferredSize(new Dimension(1300, 200));
+		panelFrase.add(textFrase);
 		
 		panelLinhaUmTeclado = new JPanel(new FlowLayout());
 		panelLinhaDoisTeclado = new JPanel(new FlowLayout());
