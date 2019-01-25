@@ -31,6 +31,12 @@ public class Digitacao {
 	public static String[] getPangramas() {
 		return pangramas;
 	}
+	@Override
+	public String toString() {
+		
+		return (String.format("Acertos: %d%n", getAcertos()));
+		
+	}
 	
 	
 	

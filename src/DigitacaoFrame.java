@@ -235,6 +235,7 @@ public class DigitacaoFrame extends JFrame {
 								
 								letraAtual++;
 								
+								
 							}else {
 								
 								campoDigitacao.setText(campoDigitacao.getText().substring(0, letraAtual));
