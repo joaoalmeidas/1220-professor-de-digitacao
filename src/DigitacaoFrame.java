@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -59,7 +60,7 @@ public class DigitacaoFrame extends JFrame {
 		panelCampoDigitacao = new JPanel(new BorderLayout());
 		panelFrase = new JPanel(new FlowLayout());
 		
-		labelInstrucaoDigitacao = new JLabel("Digite alguma coisa usando o teclado. As teclas que você apertar serão destacadas e o texto será exibido.");
+		labelInstrucaoDigitacao = new JLabel("Digite as frases abaixo usando o teclado. As teclas que você apertar serão destacadas e o texto será exibido.");
 		labelNotaInstrucao = new JLabel("Observação: Clicar nos botões do seu mouse não resultaram em nenhuma ação.");
 		panelTituloCampoDigitacao.add(labelInstrucaoDigitacao);
 		panelTituloCampoDigitacao.add(labelNotaInstrucao);
@@ -69,12 +70,14 @@ public class DigitacaoFrame extends JFrame {
 		
 		
 		campoDigitacao = new JTextField();
+		campoDigitacao.setFont(new Font("TimesRoman", Font.PLAIN, 35));
 		panelCampoDigitacao.add(campoDigitacao, BorderLayout.CENTER);
 		
 		textFrase = new JTextArea(String.format(Digitacao.getPangramas()[fraseAtual]));
 		textFrase.setEditable(false);
 		textFrase.setEnabled(false);
 		textFrase.setDisabledTextColor(Color.BLACK);
+		textFrase.setFont(new Font("TimesRoman", Font.PLAIN, 35));
 		textFrase.setPreferredSize(new Dimension(1300, 200));
 		panelFrase.add(textFrase);
 		
