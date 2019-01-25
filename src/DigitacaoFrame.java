@@ -43,6 +43,7 @@ public class DigitacaoFrame extends JFrame {
 	private JPanel panelFrase;
 	
 	private Digitacao dig;
+	private int fraseAtual = 0;
 	
 	public DigitacaoFrame() {
 		
@@ -55,6 +56,7 @@ public class DigitacaoFrame extends JFrame {
 		panelTeclado = new JPanel(new GridLayout(6, 1));
 		panelTituloCampoDigitacao = new JPanel(new GridLayout(2, 1));
 		panelCampoDigitacao = new JPanel(new BorderLayout());
+		panelFrase = new JPanel(new FlowLayout());
 		
 		labelInstrucaoDigitacao = new JLabel("Digite alguma coisa usando o teclado. As teclas que você apertar serão destacadas e o texto será exibido.");
 		labelNotaInstrucao = new JLabel("Observação: Clicar nos botões do seu mouse não resultaram em nenhuma ação.");
@@ -64,12 +66,11 @@ public class DigitacaoFrame extends JFrame {
 		panelCampoDigitacao.add(panelTituloCampoDigitacao, BorderLayout.NORTH);
 		panelCampoDigitacao.setPreferredSize(new Dimension(1300, 300));
 		
-		campoDigitacao = new JTextArea();
+		
+		campoDigitacao = new JTextArea(String.format("%n"));
 		panelCampoDigitacao.add(campoDigitacao, BorderLayout.CENTER);
 		
-		panelFrase = new JPanel(new FlowLayout());
-		
-		textFrase = new JTextField(String.format(Digitacao.getPangramas()[0]));
+		textFrase = new JTextField(String.format(Digitacao.getPangramas()[fraseAtual]));
 		textFrase.setEditable(false);
 		textFrase.setPreferredSize(new Dimension(1300, 200));
 		panelFrase.add(textFrase);
@@ -182,6 +183,19 @@ public class DigitacaoFrame extends JFrame {
 									
 										
 									teclas[i].setBackground(Color.cyan);
+									
+									if(arg0.getKeyCode() == 10 && fraseAtual < 10) {
+										
+										fraseAtual++;
+										textFrase.setText(Digitacao.getPangramas()[fraseAtual]);
+										campoDigitacao.setText(null);
+										
+									}else if(arg0.getKeyCode() == 10 && fraseAtual == 10) {
+										
+										campoDigitacao.setText(null);
+										campoDigitacao.setEditable(false);
+										textFrase.setText("INformaçções sobre o digitador.");
+									}
 									
 									System.out.println(arg0.getKeyChar());
 									System.out.println(arg0.getKeyCode());
