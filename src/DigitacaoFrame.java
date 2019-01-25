@@ -213,7 +213,6 @@ public class DigitacaoFrame extends JFrame {
 								}
 								
 								
-								
 							}
 							
 							if(campoDigitacao.getText().charAt(letraAtual) == textFrase.getText().charAt(letraAtual)) {
@@ -222,6 +221,19 @@ public class DigitacaoFrame extends JFrame {
 								dig.setAcertos(dig.getAcertos() + 1);
 								
 							}else {
+								
+								for(int i = 0; i < teclas.length; i++) {
+									
+									if(arg0.getKeyCode() == codigoTeclas[i]) {
+										
+										dig.getErrosPorTecla()[i] += 1; 
+										
+									}
+									
+									
+								}
+								
+								
 								
 								campoDigitacao.setText(campoDigitacao.getText().substring(0, letraAtual));
 								
@@ -232,12 +244,15 @@ public class DigitacaoFrame extends JFrame {
 							
 							if(textFrase.getText().equals(campoDigitacao.getText())) {
 								
-								if(fraseAtual < 10) {
+								
+								
+								if(fraseAtual < 9) {
 									
 									fraseAtual++;
 									textFrase.setText(Digitacao.getPangramas()[fraseAtual]);
 									campoDigitacao.setText(null);
 									letraAtual = 0;
+									
 									
 								}else {
 									
@@ -246,6 +261,7 @@ public class DigitacaoFrame extends JFrame {
 									textFrase.setText(dig.toString());
 									
 								}
+								
 								
 							}
 							

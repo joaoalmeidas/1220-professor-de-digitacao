@@ -35,7 +35,19 @@ public class Digitacao {
 	@Override
 	public String toString() {
 		
-		return (String.format("Acertos: %d%n", getAcertos()));
+		String erros = "";
+		
+		for(int i = 0; i < errosPorTecla.length; i++) {
+			
+			if(errosPorTecla[i] == 0) {
+				
+				erros += "0";
+				
+			}
+			
+		}
+		
+		return (String.format("Acertos: %d%nErros:%n%s", getAcertos(), erros));
 		
 	}
 	
