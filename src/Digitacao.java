@@ -47,7 +47,7 @@ public class Digitacao {
 			
 			if(errosPorTecla[i] != 0) {
 				
-				erros += String.format("%d - %s%n", errosPorTecla[i], nomeTeclas[i]);
+				erros += String.format("%s - %d, ", nomeTeclas[i], errosPorTecla[i]);
 				
 			}
 			

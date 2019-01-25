@@ -76,8 +76,9 @@ public class DigitacaoFrame extends JFrame {
 		textFrase = new JTextArea(String.format(Digitacao.getPangramas()[fraseAtual]));
 		textFrase.setEditable(false);
 		textFrase.setEnabled(false);
+		textFrase.setLineWrap(true);
 		textFrase.setDisabledTextColor(Color.BLACK);
-		textFrase.setFont(new Font("TimesRoman", Font.PLAIN, 35));
+		textFrase.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		textFrase.setPreferredSize(new Dimension(1300, 200));
 		panelFrase.add(textFrase);
 		
@@ -229,7 +230,7 @@ public class DigitacaoFrame extends JFrame {
 								
 								for(int i = 0; i < teclas.length; i++) {
 									
-									if(arg0.getKeyCode() == codigoTeclas[i]) {
+									if(textFrase.getText().toUpperCase().charAt(letraAtual) == codigoTeclas[i]) {
 										
 										dig.getErrosPorTecla()[i] += 1; 
 										
@@ -244,8 +245,6 @@ public class DigitacaoFrame extends JFrame {
 								
 							}
 							
-							System.out.println(textFrase.getText());
-							System.out.println(campoDigitacao.getText());
 							
 							if(textFrase.getText().equals(campoDigitacao.getText())) {
 								
