@@ -67,8 +67,7 @@ public class DigitacaoFrame extends JFrame {
 		
 		panelCampoDigitacao.add(panelTituloCampoDigitacao, BorderLayout.NORTH);
 		panelCampoDigitacao.setPreferredSize(new Dimension(1300, 300));
-		
-		
+
 		campoDigitacao = new JTextField();
 		campoDigitacao.setFont(new Font("TimesRoman", Font.PLAIN, 35));
 		panelCampoDigitacao.add(campoDigitacao, BorderLayout.CENTER);
@@ -140,9 +139,7 @@ public class DigitacaoFrame extends JFrame {
 				teclas[i].setMaximumSize(new Dimension(50, 50));
 				
 			}
-				
-			
-			
+
 			if(i >= 0 && i <= 13) {
 				
 				panelLinhaUmTeclado.add(teclas[i]);
@@ -164,44 +161,31 @@ public class DigitacaoFrame extends JFrame {
 				panelLinhaCincoTeclado.add(teclas[i]);
 				
 			}
-			
-			
-			
 
 		}
 
-		
 		final Color corOriginal = teclas[0].getBackground();
-		
 
-		
 		campoDigitacao.addKeyListener(
 		
 					new KeyListener() {
-						
-						
-
+			
 						@Override
 						public void keyPressed(KeyEvent arg0) {
 							
 							for(int i = 0; i < teclas.length; i++) {
 								
 								if(arg0.getKeyCode() == codigoTeclas[i]) {
-									
-										
+	
 									teclas[i].setBackground(Color.cyan);
-									
-									
+
 									if(arg0.getKeyCode() == 8) {
 										
 										letraAtual--;
 										
 									}
 									
-									
 								}
-								
-								
 								
 							}
 							
@@ -217,7 +201,6 @@ public class DigitacaoFrame extends JFrame {
 									teclas[i].setBackground(corOriginal);
 									
 								}
-								
 								
 							}
 							
@@ -236,28 +219,21 @@ public class DigitacaoFrame extends JFrame {
 										
 									}
 									
-									
 								}
-								
-								
-								
+
 								campoDigitacao.setText(campoDigitacao.getText().substring(0, letraAtual));
 								
 							}
 							
-							
 							if(textFrase.getText().equals(campoDigitacao.getText())) {
-								
-								
-								
+															
 								if(fraseAtual < 9) {
 									
 									fraseAtual++;
 									textFrase.setText(Digitacao.getPangramas()[fraseAtual]);
 									campoDigitacao.setText(null);
 									letraAtual = 0;
-									
-									
+										
 								}else {
 									
 									campoDigitacao.setText(null);
@@ -266,23 +242,14 @@ public class DigitacaoFrame extends JFrame {
 									
 								}
 								
-								
 							}
-							
-							
-							
-							
-							
-							
+
 						}
 
 						@Override
 						public void keyTyped(KeyEvent arg0) {
 							
-							
-							
-							
-							
+								
 						}
 						
 						
@@ -290,17 +257,13 @@ public class DigitacaoFrame extends JFrame {
 					
 				
 		);
-		
-		
-		
+			
 		panelTeclado.add(panelLinhaUmTeclado);
 		panelTeclado.add(panelLinhaDoisTeclado);
 		panelTeclado.add(panelLinhaTresTeclado);
 		panelTeclado.add(panelLinhaQuatroTeclado);
 		panelTeclado.add(panelLinhaCincoTeclado);
 
-		
-		
 		add(panelCampoDigitacao);
 		add(panelFrase);
 		add(panelTeclado);
